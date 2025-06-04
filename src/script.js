@@ -161,5 +161,20 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     marker.bindPopup(`<b>${data.ip}</b><br>${data.location.city} ${data.location.country}`).openPopup();
     }
 
+    //fetches the user's public IP address using the api.ipify.org service.//
+    // @returns {Promises<string>} A promise that resolves with the user's IP address.//
+    // @throws {Error} If the API call fails or returns an invalid response.//
+    async function getUserIP() {
+      try{
+        console.log("Fetching user's public IP from api.ipify.org...");
+        const ipResponse = await fetch("https://api.ipify.org?format=json");
+        
+        if(!ipResponse.ok) {
+          // if the HTTP response status is not OK, throw an error.//
+          throw new Error(`Failed to fetch user IP: ${ipResponse.status}
+          ${ipResponse.statusText}`);
+        }
+      
+
 
   // add references leaflet, Regex, geoipfiy, etc//
