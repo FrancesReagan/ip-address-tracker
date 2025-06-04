@@ -63,15 +63,16 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
     //initialize marker---place it at [0,0] initially as placeholder. Real position
     // will be updated dynamically when I or user fetches the IP location data.//
-    marker = L.marker([0,0], {icon: customIcon})", {})
+    marker = L.marker([0,0], {icon: customIcon}).addTo(map);
 
+  // leaflet geolocation event handlers--they react to outcomes of map.locate() call.//
+  // event:"locationfound" will happen when the browser successfully find's user's location//
+  map.on("locationfound", async(event) => {
+    // log coordinates found by leaflet's geolocation//
+    console.log("Leaflet: User location found",e.latlng);
+
+    
   })
-})
-
-
-
-
-  }
 
 
   // add references leaflet, Regex, geoipfiy, etc//
