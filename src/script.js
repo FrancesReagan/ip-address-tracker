@@ -20,6 +20,7 @@ fetch(url)
 .then(data => console.log(data))
 
 
+
 // my Global Variables that need to be available and modifiable by any function in application
 // throughout its repeated runs/lifecycle//
 
@@ -70,36 +71,39 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   map.on("locationfound", async(event) => {
     // log coordinates found by leaflet's geolocation//
     console.log("Leaflet: User location found",e.latlng);
-
     // though leaflet has lat/lng---will also need public IP to query geo.ipify.org for ISP, timezone, etc//
-    try {
-      // call to get public IP//
-      const userIP = await getUserIP(); 
-      console.log(`Leaflet: User's public IP identified as ${userIP}`);
-      // fetch IP data using public IP//
-      await fetchIPData(userIP);
-      // if fetch IP or IP data faiils after location found--log and show error//
-    }catch(error){
-      console.error("Error during 'locationfound' process:", error);
-      showError("Couldn't retrieve detailed data for your IP after finding your location.");
-      // try last time to fetch IP data w/o a specific query,this uses IP form `getUserIP`// 
-      await fetchIPData();
-    }
-  );
 
-  // event:"locationerror" is triggered if geolocation fails---that is user denies location permission,browser issue).//
-    map.on("locationerror", async(event) => {
-      //log error message provided by leaflet and or browser.//
-      console.error("Leaflet: Geolocation error encountered:", error.message);
-      showError(`Geolocation failed: "${error.message}". Falling back to IP-based location...`);
+// ----check this area
 
-      //fallback strategy: if precise geolocation fails, still attempt to get user's
-      // location based on their public IP address.//
+    //shared fallback function//
+    async function handleIPFallback(context = "location process") {
       try {
-        //get public IP//
-        const userIP = await getUserIP(); 
+        const userIP = await getUserIP();
+        console.log(`${context}: User's public IP identitifed as ${userIP}`);
+        await fetchIPData(userIP);
+      }catch{error} {
+        console.error(`Error during ${context}:`, error);
+        showError(`Couldn't retrieve detailed data for your IP during ${context}.`);
+        await fetchIPData();
       }
-    })
+      }
+
+      map.on("locationfound", async(event) => {
+        try{
+          await handleIPFallback("locationfound process");
+        }catch(error) {
+          // handle if needed//
+        }
+        });
+
+        map.on("locationerror", async(event) => {
+          console.error("Leaflet: Geolocation error:", event.message);
+          showError(`Geolocation failed: "${event.message}". Falling back to IP-based location...`);
+          await handleIPFallback("locationerror fallback");
+        });
+
+     
+      //Event: 
 
 
 
