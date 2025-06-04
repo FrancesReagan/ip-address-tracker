@@ -71,8 +71,27 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // log coordinates found by leaflet's geolocation//
     console.log("Leaflet: User location found",e.latlng);
 
-    
-  })
+    // though leaflet has lat/lng---will also need public IP to query geo.ipify.org for ISP, timezone, etc//
+    try {
+      // call to get public IP//
+      const userIP = await getUserIP(); 
+      console.log(`Leaflet: User's public IP identified as ${userIP}`);
+      // fetch IP data using public IP//
+      await fetchIPData(userIP);
+      // if fetch IP or IP data faiils after location found--log and show error//
+    }catch(error){
+      console.error("Error during 'locationfound' process:", error);
+      showError("Couldn't retrieve detailed data for your IP after finding your location.");
+      // try last time to fetch IP data w/o a specific query,this uses IP form `getUserIP`// 
+      await fetchIPData();
+    }
+  );
+
+
+
+  
+    }
+  
 
 
   // add references leaflet, Regex, geoipfiy, etc//
