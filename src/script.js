@@ -146,9 +146,20 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         document.getElementById("timezone").textContent = `UTC ${data.location.timezone}`;
         document.getElementById("isp").textContent = data.isp;
 
-        
-    
-      }
+
+    //update the map view and the marker's position based on the fetched location.//
+    const lat = data.location.lat;
+    const lng = data.location.lng;
+
+    //set the  map view to the new coordinates.`13` chosen zoom level for city view.//
+    map.setView([lat,lng], 13);
+
+    //move existing marker to the new coordinates//
+    marker.setLatLng([lat,lng]);
+
+    //adding a popup to marker with basic information--optional//
+    marker.bindPopup(`<b>${data.ip}</b><br>${data.location.city} ${data.location.country}`).openPopup();
+    }
 
 
   // add references leaflet, Regex, geoipfiy, etc//
