@@ -109,7 +109,25 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         });
 
      
-      //Event: 
+      // Utility functions---these help manage UI fdbk and data presentation.//
+      // displays the loading indicator//
+      function showLoading() {
+        //easy way to show the loading state to a user//
+        document.getElementById("loading").style.display = "block";
+      }
+
+      //to hide the loading indicator.//
+      function hideLoading() {
+        document.getElementById("loading").style.display = "none";  
+      }
+
+      // to display a temporary error message to user//
+      // @param {string} message - the error message to display//
+      function showError(message) {
+        const errorEl = document.getElementById("error");
+        errorEl.textContent = message;
+        errorEl.style.display = "block";
+      }
 
 
 
