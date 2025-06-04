@@ -66,32 +66,38 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // will be updated dynamically when I or user fetches the IP location data.//
     marker = L.marker([0,0], {icon: customIcon}).addTo(map);
 
-  // leaflet geolocation event handlers--they react to outcomes of map.locate() call.//
-  // event:"locationfound" will happen when the browser successfully find's user's location//
-  map.on("locationfound", async(event) => {
+   // leaflet geolocation event handlers--they react to outcomes of map.locate() call.//
+   // event:"locationfound" will happen when the browser successfully find's user's location//
+    map.on("locationfound", async(event) => {
+
     // log coordinates found by leaflet's geolocation//
     console.log("Leaflet: User location found",e.latlng);
     // though leaflet has lat/lng---will also need public IP to query geo.ipify.org for ISP, timezone, etc//
 
 // ----check this area
 
-    //shared fallback function//
+    //shared fallback function--check this again---could refactor so both locationfound and locationerror share same fallback//
     async function handleIPFallback(context = "location process") {
       try {
+        //get the public IP//
         const userIP = await getUserIP();
-        console.log(`${context}: User's public IP identitifed as ${userIP}`);
+        console.log(`${context}: User's public IP identified as ${userIP}`);
+        //fetch all data using public IP//
         await fetchIPData(userIP);
-      }catch{error} {
+      } catch{error} {
+        //if fallback IP fetching fails--show generic error//
         console.error(`Error during ${context}:`, error);
         showError(`Couldn't retrieve detailed data for your IP during ${context}.`);
-        await fetchIPData();
+        //final fallback--can load default location or just leave the map at its initial view//
+        //show global view if nothing works//
+        map.setView([0,0],2);
       }
       }
 
       map.on("locationfound", async(event) => {
         try{
           await handleIPFallback("locationfound process");
-        }catch(error) {
+        } catch(error) {
           // handle if needed//
         }
         });
