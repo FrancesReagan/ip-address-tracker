@@ -87,9 +87,23 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     }
   );
 
+  // event:"locationerror" is triggered if geolocation fails---that is user denies location permission,browser issue).//
+    map.on("locationerror", async(event) => {
+      //log error message provided by leaflet and or browser.//
+      console.error("Leaflet: Geolocation error encountered:", error.message);
+      showError(`Geolocation failed: "${error.message}". Falling back to IP-based location...`);
+
+      //fallback strategy: if precise geolocation fails, still attempt to get user's
+      // location based on their public IP address.//
+      try {
+        //get public IP//
+        const userIP = await getUserIP(); 
+      }
+    })
 
 
-  
+
+
     }
   
 
