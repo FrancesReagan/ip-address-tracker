@@ -18,7 +18,7 @@
   <div class="error" id="error"></div>
   <header class="header">
   <h1>IP Address Tracker</h1>
-  <div class="search-container"
+  <div class="search-container">
     <input
       type="text"
       class="search-input"
@@ -30,7 +30,7 @@
       <img src="images/icon-arrow.svg" alt="Search">
     </button>
   </div>
-  <div class="info-container" id="infoContainer"
+  <div class="info-container" id="infoContainer">   
     <div class="info-item">
       <div class="info-label">IP Address</div>
       <div class="info-value" id="ipAddress"></div>
@@ -57,8 +57,7 @@
 <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <!-- <!—to protect the API KEY-- > -->
-    <script src="src/secrets.js">
-    // <!-- Main Script -->
+    <script type="module" src="src/secrets.js"></script>
     <script type="module" src="src/script.js"></script>
 </body>
 </html>
