@@ -37,7 +37,23 @@ let marker;
     // and the maxZoom: 16 sets max zoom level//
     map = L.map("map").locate({setView:true, maxZoom:16});
 
-
-
+// add the base OpenStreetMap layer to map--this give the visual background for the map.//
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy;<ahref="http://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors'})
+  .addTo(map);
+  // add zoom control to map for better user interactions---and place on the bottom-rt//
+  L.control.zoom({
+    position:'bottomright' })
+    .addTo(map);
     
+  })
+})
+
+
+
+
   }
+
+
+  // add references leaflet, Regex, geoipfiy, etc//
