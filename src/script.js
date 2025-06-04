@@ -128,12 +128,27 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         errorEl.textContent = message;
         errorEl.style.display = "block";
       }
-
-
-
-
+      //automatically hides the error message after 5 seconds--so looks like to user//
+      setTimeout(() => {
+        errorEl.style.display = "none";
+      }, 5000);
     }
   
+    // to update the HTML elements with fetched IP data//
+    // @param{object} data - The IP data object returned by geo.ipify.org.//
+    function updateUI(data){
+      //populate the info box(es) with data.//
+      //use optional chaining (`||"`) for postalCode to prevent "null" or "undefinied" from showing.//
+      document.getElementById("ipAddress").textContent = data.ip;
+      document.getElementById("location").textContent = `${data.location.city}, ${data.location.region} ${data.location.postalCode ||"}`.trim();
+    
+        // Timezone needs the UTC offset prefix --as design requested.//
+        document.getElementById("timezone").textContent = `UTC ${data.location.timezone}`;
+        document.getElementById("isp").textContent = data.isp;
+
+        
+    
+      }
 
 
   // add references leaflet, Regex, geoipfiy, etc//
