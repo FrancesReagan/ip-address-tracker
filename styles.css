@@ -104,5 +104,29 @@ h1 {
     color: va(--color-primary-gray);
     opacity: 0.8;
   }
-  
+
+  .search-input:hover{
+    /* subtle lift effect */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+
+ .search-input:focus{
+  /* remove default outline for a clean look */
+  outline: none;
+  /* more  pronounced lift on focus */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+ }
+
+  .search-button{
+    position:absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--color-black);
+    border: none;
+    /* rounded only on the right */
+    border-radius: 0var(--border-radius-main)var(--border-radius-main)0;
+    /* rounded only on the right */
+    padding: 0 var(--spacing-sm);
+  }
 }
