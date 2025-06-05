@@ -203,6 +203,33 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       
       let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
       
+      // determine if querying a specific IP/domain or the current user's IP.//
+
+      if(query){
+        // basic regex to distinguish between IP addresses and domains.//
+        const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+        if(ipRegex.test(query)){
+          url += `&ipAddress=${query}`;
+          console.log(`Fetching data for IP:${query}`);
+        } else {
+          url += `&domain=${query}`;
+          console.log(`Fetching data for domain: ${query}`);
+        }
+      } else {
+        // if no query given, then fetch the current user's IP from another service and then use it for the geo.ipify.org lookup//
+        // this path is important if map.locate()doesn't work of for initial page load.//
+        console.log("No specific query provided. Attempting to fetch current user's IP.");
+        // get public IP//
+        const userIP = await getUserIP();
+        url += `&ipAddress=${userIP}`;
+      }
+
+      
+        }
+      }
+
+
+
       }
     }
       
