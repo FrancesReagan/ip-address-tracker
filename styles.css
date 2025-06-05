@@ -143,4 +143,36 @@ transition: background 0.3s ease;
   background: var(--color-primary-dark-grey);
 }
 
+.search-button img{
+  width:11px;
+  height: 14px;
+  /* ensures image is centered */
+  vertical-align: middle;
+}
 
+/* information container styles --displays IP details, positioned
+to overlap the header and map. */
+
+.info-container {
+  position: absolute;
+  left: 50%;
+  /* centers the element horizontally */
+  transform: translateX(-50%);
+  /* adjusts vertical position to overlap header/map */
+  bottom: -50%;
+  background: var(--color-white);
+  border-radius: var(--border-radius-main);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+  /* above the map */
+  z-index:1000;
+  /* full width minus side padding */
+  width: calc(100%-var(--spacing-sm)*2);
+  max-width: 1110px;
+  /* vertical and horizontal padding */
+  padding:var(--spacing-md)var(--spacing-sm);
+  display: grid;
+  /* single column on mobile */
+  grid-template-columns: 1fr;
+  /* spacing between grid items */
+  gap:var(--spacing-sm);
+}
