@@ -192,3 +192,11 @@ to overlap the header and map. */
   /* space below the label */
   margin-bottom:var(--spacing-xs);
 }
+
+.info-value{
+  color:var(--color-primary-dark-grey);
+  font-size:var(--font-size-value);
+  font-weight: 500;
+  /* prevents long text from overflowing */
+  word-break:break-word;
+}
