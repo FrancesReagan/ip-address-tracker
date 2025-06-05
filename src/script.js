@@ -1,3 +1,5 @@
+// addd my API_KEY in the script below when asked for it in function or method//
+
 // config and imports//
 // notes: this project uses an API key to access the IP geolocation services.//
 // I will ensure that I have my API_KEY in secrets.js and correctly imported to protect from it being used
