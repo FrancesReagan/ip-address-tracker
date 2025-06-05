@@ -236,16 +236,24 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         throw new Error(errorData.messages || `API call failed:${response.status} ${response.statusText}`||"Failed to fetch IP data.");
       }
 
+      const data = await response.json();
+      // log the full data for debugging//
+      console.log("IPify API Response received:",data);
+      // update the user interface with the new data.//
+      updateUI(data);
       
-
-        }
-      }
-
-
-
-      }
+    } catch (error) {
+      // display user-friendly error message//
+      showError(error.message);
+      // log full error details for developer//
+      console.error("Caught error in fetchIPData:",error);
+    } finally {
+      // hide loading indicator regardless of success or failure//
+      hideLoading();
     }
-      
+    }
+
+    
 
 
   // add references leaflet, Regex, geoipfiy, etc//
