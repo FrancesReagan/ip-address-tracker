@@ -249,3 +249,52 @@ to overlap the header and map. */
   z-index:3000;
   font-weight:500;
 }
+
+/* desktop styles (min-width:768px---adjustments for larger screens) */
+@media (min-width:768px) {
+  .header {
+    /* adjusted padding for desktop */
+    padding:var(--spacing-md)var(--spacing-md)8rem;
+    background-image: url("images/pattern-bg-desktop.png");
+  }
+
+h1 {
+  /* slightly larger heading for desktop */
+  font-size:2rem;
+}
+
+.info-container {
+  /* four columns on desktop */
+  grid-template-columns:repeat(4,1fr);
+  /* adjusted padding */
+  padding:var(--spacing-lg)var(--spacing-md);
+  /* adjusted vertical position for desktop overlap */
+  bottom:-60%;
+  /* remove gap between grid items--dividers will provide separation */
+  gap:0;
+}
+
+.info-item {
+  /* need for positioning the ::after divider */
+  position:relative;
+  /* padding for content within each item */
+  padding:0 var(--spacing-md);
+  /* align text to the left on desktop */
+  text-align:left;
+}
+
+/* vertical line separator between info items */
+.info-item:not(:last-child)::after {
+  content:"";
+  position:absolute;
+  right:0,
+  top:50%;
+  transform:translateY(-50%);
+  height:75px;
+  width:1px;
+  /* light gray line */
+  background:#e8e8e8;
+}
+
+
+}
