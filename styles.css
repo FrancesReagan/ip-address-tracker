@@ -53,3 +53,16 @@ body{
   /* can add a subtle background color if map doesn't cover whole area */
 background-color: #f0f2f5;
 }
+
+/* header section styles */
+.header{
+  background: url("images/pattern-bg-mobile.png") no-repeat center;
+  /* ensures background image covers the area */
+  background-size: cover; 
+  /* top, sides, bottom padding */
+  padding: var(--spacing-md)var(--spacing-sm)var(--spacing-xl);
+  /* needed for positioning .info-container */
+  position: relative;
+  /* ensures header content is above the map */
+  z-index: 1000;
+}
