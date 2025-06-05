@@ -278,6 +278,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     });
   
+    // add event listener for the "enter" key press in the search input//
+    searchInput.addEventListener("keypress", (event) => {
+      // check if the pressed key is the "enter" key//
+      if(event.key==="Enter"){
+        const query = searchInput.value.trim();
+        if(query) {
+          fetchIPData(query);
+        } else {
+          showError("Please enter an IP address or domain to search.");
+        }
+      }
+    });
+
     
 
 
