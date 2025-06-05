@@ -176,3 +176,19 @@ to overlap the header and map. */
   /* spacing between grid items */
   gap:var(--spacing-sm);
 }
+
+.info-item {
+  /* center text on mobile */
+  text-align: center;
+}
+
+.info-label {
+  color:var(--color-primary-gray);
+  font-size:var(--font-size-label);
+  font-weight: 700;
+  /* spaced out letters */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  /* space below the label */
+  margin-bottom:var(--spacing-xs);
+}
