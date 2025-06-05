@@ -325,3 +325,20 @@ h1 {
   justify-content:center;
 }
 
+.custom-marker::after{
+  /* creates the triangular pointer at the bottom */
+  content:"";
+  position:absolute;
+  /* extends below the circle */
+  bottom:-8px;
+  left:50%;
+  /* centers and rotates to form a triangle */
+  transform:translateX(-50%)rotate(45deg);
+  width:16px;
+  height:16px;
+  background:var(--color-black);
+  /* ensures it sits below the main circle visually */
+  z-index:-1;
+  /* add a slight border to triangle to match the circle if desired */
+  border:1px solid var(--color-black);
+}
