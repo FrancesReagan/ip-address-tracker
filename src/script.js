@@ -161,7 +161,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     marker.bindPopup(`<b>${data.ip}</b><br>${data.location.city} ${data.location.country}`).openPopup();
     }
 
-    //fetches the user's public IP address using the api.ipify.org service.//
+    // fetches the user's public IP address using the api.ipify.org service.//
     // @returns {Promises<string>} A promise that resolves with the user's IP address.//
     // @throws {Error} If the API call fails or returns an invalid response.//
     
@@ -252,8 +252,22 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       hideLoading();
     }
     }
+// application initialization on DOMContentLoaded//
+// this ensures that the HTML content is fully loaded before my javascript tries to interact with it//
+document.addEventListener("DOMContentLoaded", async () => {
+  // initialize Leaflet map..this triggers geolocation process//
+  initMap();
+  // the first loading of user IP data is now moved by the initMap function's "locationfound" or "locationerror" event handlers. Therefore, I don't need
+  // a direct `fetchIPData()` method here anymore//
 
-    
+  // search functionality setup----get references to my search input and button elements//
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+  
+})
+
+
+
 
 
   // add references leaflet, Regex, geoipfiy, etc//
