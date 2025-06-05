@@ -164,6 +164,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     //fetches the user's public IP address using the api.ipify.org service.//
     // @returns {Promises<string>} A promise that resolves with the user's IP address.//
     // @throws {Error} If the API call fails or returns an invalid response.//
+    
     async function getUserIP() {
       try{
         console.log("Fetching user's public IP from api.ipify.org...");
@@ -174,6 +175,36 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           throw new Error(`Failed to fetch user IP: ${ipResponse.status}
           ${ipResponse.statusText}`);
         }
+          const ipData = await ipResponse.json();
+          return ipData.ip;
+      } catch (error) {
+       console.error("Error in getUserIP function:", error);
+
+       //re-throw a user-friendly error message.//
+       throw new Error("Failed to get your public IP address. Check your network connection.");
+      }
+     }
+
+    //  fetches ip geolocation from geo.ipify.org API.//
+    // this function handles both inital load(user's IP) and search queries (specific IP/domain).//
+    // @param {string} [query="] - the IP address or domain to search for. If empty 
+    // it fetches the user's own IP data//
+    // @throws {Error} if the API key is missing, or the API call fails.//
+
+    async function fetchIPData(query = ") {
+    //show loading indicator when data is being fetched.//
+      showLoadiing();
+      try {
+          // ensure the API_KEY is  properly configured.//
+      if (typeof API_KEY === "undefined" || API_KEY === "MY_API_KEY_HERE" || API_KEY.length < 5){
+      // api key length check added for robustness//
+        throw new Error("API key not found or invalid. Please ensure API_KEY is correctly set in secrets.js.");
+      }
+      
+      let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
+      
+      }
+    }
       
 
 
