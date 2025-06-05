@@ -291,7 +291,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
-    
+    // examples for manual testing---will keep commented out in production//
+    // to test with Google's IP://
+    // fetchIPData(TEST_IP_ADDRESS);
+
+    // to test with a domain://
+    // fetchIPData(TEST_DOMAIN);
+  });
 
 
 
