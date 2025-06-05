@@ -193,10 +193,59 @@ to overlap the header and map. */
   margin-bottom:var(--spacing-xs);
 }
 
-.info-value{
+.info-value {
   color:var(--color-primary-dark-grey);
   font-size:var(--font-size-value);
   font-weight: 500;
   /* prevents long text from overflowing */
   word-break:break-word;
+}
+
+/* map styles--ensures the leaflet map takes up the remaining available spaces.*/
+#map {
+  /* allows the  map to grow and fill available vertical space */
+  flex: 1;
+  /* keeps map below header content */
+  z-index: 1;
+  /* fallback background for map area */
+  background:#f3f3f3;
+  /* ensures the map has a minimum visible height */
+  min-height: 400px;
+
+}
+
+/* loading and error message styles --- feedback for user actions */
+
+.loading {
+  display: none;
+  position: fixed;
+  top:50%;
+  left:50%;
+  /* centers the element */
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.8);
+  color:var(--color-white);
+  padding:var(--spacing-xs)var(--spacing-md);
+  border-radius:10px;
+  /* ensures it's above everything else */
+  z-index:2000;
+  /* center text horizontally */
+  text-align: center;
+}
+
+.error {
+  /* hidden by default, shown by javascript */
+  display:none;
+  background:var(--color-error);
+  color:var(--color-white);
+  padding:var(--spacing-xs);
+  text-align:center;
+  /* sticks to the top */
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  /* ensures it's above everything, including loading */
+  z-index:3000;
+  font-weight:500;
 }
