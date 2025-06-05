@@ -296,5 +296,32 @@ h1 {
   background:#e8e8e8;
 }
 
+.info-label {
+  font-size:0.75rem;
+  margin-bottom:1rem;
 
 }
+
+.info-value {
+  /* slightly larger value font */
+  font-size:1.5rem
+}
+}
+
+/* custom leaflet marker icon--styles for the marker
+/* L.divIcon created in javascript */
+.custom-marker{
+  background:var(--color-black);
+  /* creates the circle */
+  border-radius:50%,
+  width:46px;
+  /* changed height to 46px for a perfect circle */
+  height:46px;
+  /* for positioning psuedo-elements */
+  position:relative;
+  /* to center inner circle */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
