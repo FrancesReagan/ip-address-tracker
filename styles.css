@@ -66,3 +66,21 @@ background-color: #f0f2f5;
   /* ensures header content is above the map */
   z-index: 1000;
 }
+
+h1 {
+  color: var(--color-white);
+  text-align: center;
+  font-size: var(--font-size-heading);
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+}
+
+/* search bar components */
+.search-container{
+  /* common max-width for content */
+  max-width: 555px;
+  /* centers the container */
+  margin: 0 auto; 
+  /* allows positioning of search button */
+  position: relative;
+}
