@@ -223,8 +223,21 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         const userIP = await getUserIP();
         url += `&ipAddress=${userIP}`;
       }
+ 
+      // this is useful for debugging the API call//
+      console.log(`Sending request to: ${url}`);
+      const response = await fetch(url);
+      
+      if(!response.ok){
+        // attempt to parse API-specific error messages.//
+        // catch JSON parse errors//
+        const errorData = await response.json().catch(() => ({})); 
+        // prioritize API's message, then HTTP status message, then a common or generic fallback.//
+        throw new Error(errorData.messages || `API call failed:${response.status} ${response.statusText}`||"Failed to fetch IP data.");
+      }
 
       
+
         }
       }
 
