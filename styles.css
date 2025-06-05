@@ -129,4 +129,18 @@ h1 {
     /* rounded only on the right */
     padding: 0 var(--spacing-sm);
   }
+
+cursor: pointer;
+/* to center the arrow image vertically */
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.3s ease;
 }
+
+.search-button:hover {
+  /* darker on hover */
+  background: var(--color-primary-dark-grey);
+}
+
+
