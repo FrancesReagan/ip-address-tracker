@@ -263,8 +263,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   // search functionality setup----get references to my search input and button elements//
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
+
+
+  // add event listener for the search button click//
+  searchButton.addEventListener("click", () => {
+    // get and clean the input value//
+    const query = searchInput.value.trim(); 
+    // only search if there is input//
+    if(query){
+      fetchIPData(query);
+    } else {
+      // optional to give feedback if search input is empty//
+      showError("Please enter an IP address or domain to search.");
+    }
+    });
   
-})
+    
+
 
 
 
