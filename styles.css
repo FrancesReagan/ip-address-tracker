@@ -30,5 +30,26 @@
 /* Spacing */
 /* 12 px */
 --spacing-xs: 0.75rem;
+/* 24px */
+--spacing-sm: 1.5rem;
+/* 32px */
+--spacing-md: 2rem;
+/* 40px */
+--spacing-lg: 2.5rem;
+/* 112px for header padding */
+--spacing-xl: 7rem;
 
+/* border radius */
+--border-radius-main: 15px;
+}
+
+body{
+  font-family: "Rubik", sans-serif;
+  /* make sure body takes full viewpoint height */
+  min-height: 100vh; 
+  display: flex;
+  /* stacks header and map vertically */
+  flex-direction: column;
+  /* can add a subtle background color if map doesn't cover whole area */
+background-color: #f0f2f5;
 }
