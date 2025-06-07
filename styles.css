@@ -293,7 +293,7 @@ h1 {
   height:75px;
   width:1px;
   /* light gray line */
-  background:#e8e8e8;
+  background:var();
 }
 
 .info-label {
@@ -306,11 +306,10 @@ h1 {
   /* slightly larger value font */
   font-size:1.5rem
 }
-}
 
 /* custom leaflet marker icon--styles for the marker
 /* L.divIcon created in javascript */
-.custom-marker{
+.custom-marker {
   background:var(--color-black);
   /* creates the circle */
   border-radius:50%,
@@ -352,4 +351,4 @@ h1 {
   /* add a slight border to triangle to match the circle if desired */
   border:1px solid var(--color-black);
 }
-
+}

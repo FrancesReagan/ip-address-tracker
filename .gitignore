@@ -1,22 +1,17 @@
-# Avoid accidental Sketch file upload 
-###############################################
-## Please do not remove line 5 - thanks! 🙂 ##
-###############################################
-*.sketch
-
-# Avoid accidental XD or Figma upload if you convert the design file
-#######################################################
-## Please do not remove lines 11 and 12 - thanks! 🙂 ##
-#######################################################
-*.xd
-*.fig
-
-# Avoid your project being littered with annoying .DS_Store files!
-.DS_Store
 # API Keys and Secrets
+src/secrets.js
 secrets.js
+.env
+.env.local
 
-# IDE and Editor files
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# IDE files
 .vscode/
 .idea/
 *.swp
@@ -31,23 +26,10 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Dependencies (if you add any later)
-node_modules/
-bower_components/
-
-# Build files
-dist/
-build/
+# Testing
+coverage/
+.nyc_output/
 
 # Temporary files
 *.tmp
 *.temp
-.cache/
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
