@@ -35,6 +35,10 @@ let map = null
 //this holds the leaflet marker instance (for IP's location)//
 let marker = null;
 
+// regex paterns//
+const ipv4Regex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
     // initialize map on the "map" div//
