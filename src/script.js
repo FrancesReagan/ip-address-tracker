@@ -50,6 +50,15 @@ const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
   ocnst errorMsg = document.getElementById("error");
 
   // utility functions//
+function showLoading() {
+  if(loadingDiv) loadingDiv.style.display = "block";
+}
+
+function hideLoading() {
+  if(loadingDiv) loadingDiv.style.display = "none";
+}
+
+
 
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
