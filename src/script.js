@@ -39,6 +39,11 @@ let marker = null;
 const ipv4Regex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
 
+// DOM elements//
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+  const ipAddressEl =
+
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
     // initialize map on the "map" div//
@@ -269,9 +274,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // the first loading of user IP data is now moved by the initMap function's "locationfound" or "locationerror" event handlers. Therefore, I don't need
   // a direct `fetchIPData()` method here anymore//
 
-  // search functionality setup----get references to my search input and button elements//
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
+
+
+  
 
 
   // add event listener for the search button click//
