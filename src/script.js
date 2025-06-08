@@ -1,14 +1,14 @@
-// addd my API_KEY in the script below when asked for it in function or method//
+// addd my API_KEY in the script//
 
 // config and imports//
-// notes: this project uses an API key to access the IP geolocation services.//
-// I will ensure that I have my API_KEY in secrets.js and correctly imported to protect from it being used
-// by outside sources--so I can use all 1000 fetch and response not someone else//
+// notes: project uses an API key to access the IP geolocation services.//
+// need API_KEY in secrets.js and  import to protect from it being used
+// by outside sources--so I can use all 1000 fetch and response ---not someone else//
 // 
 
 
 // --- For Local Testing & Debugging  ---
-// These are example IP addresses and domains I can use to test the lookup
+// example IP addresses and domains to test//
 // functionality without needing to type them every time.
 // const TEST_IP_ADDRESS = "8.8.8.8"; // Google's public DNS IP for testing
 // const TEST_DOMAIN = "www.perscholas.org"; // Per Scholas's domain for testing
@@ -28,7 +28,7 @@ console.log(API_KEY);
 const ipAddress = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=`;
 const domainsEndpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&domain=`;
 
-// my Global Variables// // that need to be available and modifiable by any function in application throughout its repeated runs/lifecycle//
+// my Global Variables//
 // this holds the leaflet map instance //
 let map = null
 
@@ -40,9 +40,16 @@ const ipv4Regex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]
 const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
 
 // DOM elements//
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const ipAddressEl =
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-button");
+  const ipDisplay = document.getElementById("ip-address");
+  const locationDisplay = document.getElementById("location");
+  const timezoneDisplay = document.getElementById("timezone");
+  const ispDisplay = document.getElementById("isp");
+  const loadingDisplay = document.getElementById("loading");
+  ocnst errorMsg = document.getElementById("error");
+
+  // utility functions//
 
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
