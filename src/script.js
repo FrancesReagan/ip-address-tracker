@@ -5,13 +5,10 @@
 // I will ensure that I have my API_KEY in secrets.js and correctly imported to protect from it being used
 // by outside sources--so I can use all 1000 fetch and response not someone else//
 // 
-// === Configuration & Imports ===
-// This project uses an API key to access the IP geolocation service.
-// Make sure you have your API_KEY defined in secrets.js and it's properly imported.
-// import { API_KEY } from './secrets.js';
 
-// --- For Local Testing & Debugging (often removed in production) ---
-// These are example IP addresses and domains you can use to test the lookup
+
+// --- For Local Testing & Debugging  ---
+// These are example IP addresses and domains I can use to test the lookup
 // functionality without needing to type them every time.
 // const TEST_IP_ADDRESS = "8.8.8.8"; // Google's public DNS IP for testing
 // const TEST_DOMAIN = "www.perscholas.org"; // Per Scholas's domain for testing
@@ -19,23 +16,20 @@
 
 
 import { API_KEY } from "./secrets.js";
-
 console.log(API_KEY);
 
-// below is for testing locally and debugging---example IP addresses and domain class used to test the lookup
-// functionality.
-const TEST_IP_ADDRESS = "8.8.8.8"; // data from input--google's public DNS IP//
-const TEST_DOMAIN = "www.perscholas.org";//perscholas's domain for testing
 // const url = `https://geo.ipify.org/api/v2/country?apiKey=${API_KEY}&ipAddress=${ipAddress}`
 
-fetch(url)
-.then(res => res.json())
-.then(data => console.log(data))
+// fetch(url)
+// .then(res => res.json())
+// .then(data => console.log(data))
 
+// API endpoints//
+const ipAddress = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=`;
+const domainsEndpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&domain=`;
 
-
-// my Global Variables that need to be available and modifiable by any function in application
-// throughout its repeated runs/lifecycle//
+// my Global Variables//
+// that need to be available and modifiable by any function in application throughout its repeated runs/lifecycle//
 
 // this holds the leaflet map instance //
 let map;  
