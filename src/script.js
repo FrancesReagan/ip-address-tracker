@@ -28,14 +28,12 @@ console.log(API_KEY);
 const ipAddress = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=`;
 const domainsEndpoint = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&domain=`;
 
-// my Global Variables//
-// that need to be available and modifiable by any function in application throughout its repeated runs/lifecycle//
-
+// my Global Variables// // that need to be available and modifiable by any function in application throughout its repeated runs/lifecycle//
 // this holds the leaflet map instance //
-let map;  
+let map = null
 
 //this holds the leaflet marker instance (for IP's location)//
-let marker;
+let marker = null;
 
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
