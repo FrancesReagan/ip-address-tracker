@@ -197,8 +197,25 @@ if(!map)
           position."bottomright"
         }).addTo(map);
 
-        // try using browser geolocatoin//
+        // try using browser geolocation//
         map.locate({setView:true, maxZoom:16})
+
+        // geolocation success handling//
+        map.on("locationfound",async (e) => {
+          console.log("Browser location found:",e.latlng);
+
+          // fetch IP data for ISP and other data detials anyway//
+          await fetchLocationData();
+        });
+
+        // handle geolocation error//
+        map.on("locationerror",async (e) => {
+          console.log("Browser geolocation failed:", e.message);
+          showError("Geolocation failed. Using IP-based location...");
+
+          // fall back to IP-based location//
+          await fetchLocationData();
+        });
     }
   
 
