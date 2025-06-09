@@ -127,7 +127,11 @@ if(!map)
       iconAnchor:[23,56], 
     });
 
-  }
+    marker = L.marker([lat,lng], {icon: customIcon}).addTo(map);
+
+  
+  // add popup w/info//
+  marker.bindPopup(`<b>${data.ip}</b><br>${data.location.city},${data.location.country}`).openPopup();
   }
 
 
