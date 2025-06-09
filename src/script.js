@@ -216,7 +216,25 @@ if(!map)
           // fall back to IP-based location//
           await fetchLocationData();
         });
+    } catch (error) {
+      console.error("Error initializing map:", error);  
+      showError("Failed to initialize map");
     }
+  }
+  // search functionality handling//
+  async function handleSearch() {
+    const query = searchInput.ariaValueMax.trim();
+
+    if(!query) {
+      showError("Please enter an IP address or domain to search");
+      return;
+    }
+    await fetchLocationData(query);
+    // clear search input on success//
+    if(!errorMsg || errorMsg.style.display === "none") {
+      searchInput.value = "";
+    }
+  }
   
 
 
