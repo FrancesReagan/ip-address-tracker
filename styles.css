@@ -111,11 +111,9 @@ h1 {
   background: var(--color-primary-dark-grey);
 }
 
-.search-button img{
+.search-button img {
   width:11px;
   height: 14px;
-  /* ensures image is centered */
-  vertical-align: middle;
 }
 
 /* information container styles --displays IP details, positioned
@@ -128,25 +126,21 @@ to overlap the header and map. */
   transform: translateX(-50%);
   /* adjusts vertical position to overlap header/map */
   bottom: -50%;
-  background: var(--color-white);
+  background: white;
   border-radius: var(--border-radius-main);
   box-shadow: 0 25px 50px rgba(0,0,0,0.1);
   /* above the map */
   z-index:1000;
-  /* full width minus side padding */
-  width: calc(100%-var(--spacing-sm)*2);
+  width: calc(100% - var(--spacing-sm) * 2);
   max-width: 1110px;
-  /* vertical and horizontal padding */
-  padding:var(--spacing-md)var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-sm);
   display: grid;
-  /* single column on mobile */
   grid-template-columns: 1fr;
   /* spacing between grid items */
-  gap:var(--spacing-sm);
+  gap: var(--spacing-sm);
 }
 
 .info-item {
-  /* center text on mobile */
   text-align: center;
 }
 
@@ -171,19 +165,13 @@ to overlap the header and map. */
 
 /* map styles--ensures the leaflet map takes up the remaining available spaces.*/
 #map {
-  /* allows the  map to grow and fill available vertical space */
   flex: 1;
-  /* keeps map below header content */
   z-index: 1;
-  /* fallback background for map area */
   background:#f3f3f3;
-  /* ensures the map has a minimum visible height */
   min-height: 400px;
-
 }
 
-/* loading and error message styles --- feedback for user actions */
-
+/* loading/error */
 .loading {
   display: none;
   position: fixed;
@@ -192,13 +180,12 @@ to overlap the header and map. */
   /* centers the element */
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,0.8);
-  color:var(--color-white);
-  padding:var(--spacing-xs)var(--spacing-md);
+  color:white;
+  padding: var(--spacing-xs) var(--spacing-md);
   border-radius:10px;
-  /* ensures it's above everything else */
   z-index:2000;
-  /* center text horizontally */
   text-align: center;
+  font-size: var(--font-size-body);
 }
 
 .error {
