@@ -58,7 +58,21 @@ function hideLoading() {
   if(loadingDiv) loadingDiv.style.display = "none";
 }
 
+// show error msg to user//
+function showError(message){
+  if(!errorMsg){
+    console.error(message);
+    return;
+  }
 
+  errorMsg.textContent = message;
+  errorMsg.style.display = "block";
+
+  // hide after 5 sec//
+  setTimeout(() => {
+    errorMsg.style.display = "none";
+  },5000);
+}
 
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
