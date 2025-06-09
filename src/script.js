@@ -74,6 +74,29 @@ function showError(message){
   },5000);
 }
 
+// fetch user's public IP address//
+// @returns{Promise<string>}The user's IP address//
+// @throws{Error}if the API call fails//
+
+async function getUserIP() {
+  try {
+    console.log("Fetching user's public IP...");
+    const response = await fetch("https://api.ipify.org?format=json");
+
+    if(!response.ok) {
+      throw new Error(`Failed to fetch IP: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.ip;
+  }catch(error){
+    console.error("Error fetching user IP:", error);
+    throw new Error("Failed to get your public IP address. Check your network connection.");
+  }
+  }
+
+
+
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
   function initMap() {
     // initialize map on the "map" div//

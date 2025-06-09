@@ -1,6 +1,6 @@
 
 // Replace the placeholder with my actual API key from geo.ipify.org
-export const API_KEY = "at_XXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+export const API_KEY = "at_e0zF6yMJ7oxQNMqonRNWXKFaLf27q";
 
 // IMPORTANT SECURITY NOTES:
 // 1. Never commit this file with my real API key to version control
