@@ -1,12 +1,10 @@
-/* general styles and reset---applies basic styling resets browser defaults, and sets up flexible layout */
+
 *{
   margin: 0;
   padding: 0;
-  /* ensures padding and border are included in element's total width/height */
   box-sizing: border-box;
 }
 
-/* define CSS variables for easy theme management */
 :root {
   /* colors */
   --color-primary-dark-grey:hsl(0,0%,17%);
@@ -16,45 +14,29 @@
   --color-white: hsl(0,0%,100%);
   --color-error: #ff5252; 
 
-
-/* font sizes */
-/* 18px for input */
 --font-size-body: 1.125rem;
-/* 28px for mobile H1 */
 --font-size-heading: 1.75rem;
-/* 10px for info labels */
 --font-size-label:0.625rem;
-/* 20px for info values */
 --font-size-value: 1.25rem;
 
-/* Spacing */
-/* 12 px */
 --spacing-xs: 0.75rem;
-/* 24px */
 --spacing-sm: 1.5rem;
-/* 32px */
 --spacing-md: 2rem;
-/* 40px */
 --spacing-lg: 2.5rem;
-/* 112px for header padding */
 --spacing-xl: 7rem;
 
-/* border radius */
 --border-radius-main: 15px;
 }
 
-body{
+body {
   font-family: "Rubik", sans-serif;
-  /* make sure body takes full viewpoint height */
   min-height: 100vh; 
   display: flex;
-  /* stacks header and map vertically */
   flex-direction: column;
-  /* can add a subtle background color if map doesn't cover whole area */
 background-color: #f0f2f5;
 }
 
-/* header section styles */
+/* header */
 .header{
   background: url("images/pattern-bg-mobile.png") no-repeat center;
   /* ensures background image covers the area */
