@@ -95,6 +95,16 @@ async function getUserIP() {
   }
   }
 
+  // updates UI with IP location data//
+  // @param {Object}data - location data from geo.ipify API//
+  function updateUI(data){
+    // Update text elements//
+    ipDisplay.textContent = data.ip;
+    locationDisplay.textContent = `${data.location, ${data.location.region} ${data.location.postalCode || ""}`.trim();
+    timezoneDisplay.textContent = `UTC ${data.location.timezone}`;
+    ispDisplay.textContent = data.isp;
+  }
+
 
 
 // Function to Initialize Map-----this function will set up the leaflet  map and the attempts to locate user//
