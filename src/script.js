@@ -242,9 +242,22 @@ document.addEventListener("DOMContentLoaded",() => {
   console.log("Initializing IP Tracker...");
 
   // initialize map (triggers first data fetch)//
-  
+  initMap();
+
+  // search button click//
+  searchButton.addEventListener("click", handleSearch);
+
+  // search input enter key//
+  searchInput.addEventListener("keypress", (event) => {
+    if(event.key === "Enter") {
+      handleSearch();
+    }
+  });
 });
   
+// -----export for testing in future-----//
+// uncomment these if I want to test individual functions//
+// export {getUserIP, fetchLocationData,updateUI};
 
 
 
