@@ -189,20 +189,33 @@ to overlap the header and map. */
 }
 
 .error {
-  /* hidden by default, shown by javascript */
   display:none;
   background:var(--color-error);
-  color:var(--color-white);
+  color:white;
   padding:var(--spacing-xs);
   text-align:center;
-  /* sticks to the top */
   position:fixed;
   top:0;
   left:0;
   right:0;
-  /* ensures it's above everything, including loading */
   z-index:3000;
   font-weight:500;
+  font-size:0.875rem;
+}
+
+/* custom marker */
+.custom-marker {
+  background-color:#000;
+  border-radius: 50% 50% 50% 0;
+  transform: roatate(-45deg);
+  border:4px sold #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width:46px;
+  height:56px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
 
 /* desktop styles (min-width:768px---adjustments for larger screens) */
