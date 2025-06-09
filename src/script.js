@@ -235,6 +235,15 @@ if(!map)
       searchInput.value = "";
     }
   }
+
+// -----------event listeners--------------//
+// initialize when DOM is ready//
+document.addEventListener("DOMContentLoaded",() => {
+  console.log("Initializing IP Tracker...");
+
+  // initialize map (triggers first data fetch)//
+  
+});
   
 
 
