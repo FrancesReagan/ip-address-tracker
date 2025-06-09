@@ -100,9 +100,34 @@ async function getUserIP() {
   function updateUI(data){
     // Update text elements//
     ipDisplay.textContent = data.ip;
-    locationDisplay.textContent = `${data.location, ${data.location.region} ${data.location.postalCode || ""}`.trim();
+    locationDisplay.textContent = `${data.location.city}, ${data.location.region} ${data.location.postalCode || ""}`.trim();
     timezoneDisplay.textContent = `UTC ${data.location.timezone}`;
     ispDisplay.textContent = data.isp;
+
+
+// update map//
+const{lat,lng} = data.location;
+
+if(!map)
+  console.error("Map not initialized");
+  return;
+  }
+
+  // set map view//
+  map.setView([lat,lng],19);
+
+  // update or create  marker//
+  if(marker){
+    marker.setLatLng([lat,lng]);
+  } else {
+// create custom marker icon//
+    const customIcon = L.divIcon({
+      className: "custom-marker",
+      iconSize:[46,56],
+      iconAnchor:[23,56], 
+    });
+
+  }
   }
 
 
