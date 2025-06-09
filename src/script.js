@@ -47,16 +47,15 @@ const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
   const timezoneDisplay = document.getElementById("timezone");
   const ispDisplay = document.getElementById("isp");
   const loadingDisplay = document.getElementById("loading");
-  ocnst errorMsg = document.getElementById("error");
+  const errorMsg = document.getElementById("error");
 
   // utility functions//
 function showLoading() {
-  if(loadingDiv) loadingDiv.style.display = "block";
+  if(loadingDisplay) loadingDisplay.style.display = "block";
 }
 
 function hideLoading() {
-  if(loadingDiv) loadingDiv.style.display = "none";
-}
+  if(loadingDisplay) loadingDisplay.style.display = "none";
 
 // show error msg to user//
 function showError(message){
@@ -97,7 +96,7 @@ async function getUserIP() {
 
   // updates UI with IP location data//
   // @param {Object}data - location data from geo.ipify API//
-  function updateUI(data){
+  function updateUI(data) {
     // Update text elements//
     ipDisplay.textContent = data.ip;
     locationDisplay.textContent = `${data.location.city}, ${data.location.region} ${data.location.postalCode || ""}`.trim();
@@ -108,7 +107,7 @@ async function getUserIP() {
 // update map//
 const{lat,lng} = data.location;
 
-if(!map)
+if(!map){
   console.error("Map not initialized");
   return;
   }
@@ -136,6 +135,7 @@ if(!map)
 
   // fetch IP/Domain location data from geo.ipify API//
   // @param {string} query - IP address or domain to look up(empty for user's IP)//
+
   async function fetchLocationData(query=""){
     showLoading();
 
@@ -149,16 +149,19 @@ if(!map)
 
       if(query){
         // determine if IP or Domain//
-        if(ipv4Regex.test(query)){
-          url = ipAddressEndpoint + query;
-          console.log(`Fetching data for IP:${query}`);
-        } else {
-          throw new Error("Invalid IP address or domain format");
-        }
+       if(ipv4Regex.test(query)){
+        url = ipAddress + query;
+        console.log(`Fetching data for IP:${query}`);
+       } else if(domainRegex.test(query)) {
+        url = domainsEndpoint + query;
+       console.log(`Fetching data for domain:${query}`);
+       } else {
+       throw new Error("Invalid IP address or domain format");
+       }
       } else {
         // get user's IP first//
         const userIP = await getUserIP();
-        url = ipAddressEndpoint + userIP;
+        url = ipAddress + userIP;
         console.log(`Fetching data from userIP:${userIP}`);
       }
       const response = await fetch(url);
@@ -188,13 +191,13 @@ if(!map)
         map = L.map("map").setView([0,0],2);
 
         // add tile layer//
-        L.titleLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
          maxZoom: 19,
          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',}).addTo(map);
 
         //add zoom control//
         L.control.zoom({
-          position."bottomright"
+          position:"bottomright"
         }).addTo(map);
 
         // try using browser geolocation//
@@ -223,7 +226,7 @@ if(!map)
   }
   // search functionality handling//
   async function handleSearch() {
-    const query = searchInput.ariaValueMax.trim();
+   const query = searchInput.value.trim();
 
     if(!query) {
       showError("Please enter an IP address or domain to search");

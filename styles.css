@@ -33,7 +33,7 @@ body {
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
-background-color: #f0f2f5;
+  background-color: #f0f2f5;
 }
 
 /* header */
@@ -41,9 +41,7 @@ background-color: #f0f2f5;
   background: url("images/pattern-bg-mobile.png") no-repeat center;
   /* ensures background image covers the area */
   background-size: cover; 
-  /* top, sides, bottom padding */
   padding: var(--spacing-md)var(--spacing-sm)var(--spacing-xl);
-  /* needed for positioning .info-container */
   position: relative;
   /* ensures header content is above the map */
   z-index: 1000;
@@ -77,7 +75,7 @@ h1 {
   
 
   .search-input::placeholder{
-    color: va(--color-primary-gray);
+    color: var(--color-primary-gray);
     opacity: 0.8;
   }
 
@@ -122,7 +120,6 @@ to overlap the header and map. */
 .info-container {
   position: absolute;
   left: 50%;
-  /* centers the element horizontally */
   transform: translateX(-50%);
   /* adjusts vertical position to overlap header/map */
   bottom: -50%;
@@ -148,10 +145,8 @@ to overlap the header and map. */
   color:var(--color-primary-gray);
   font-size:var(--font-size-label);
   font-weight: 700;
-  /* spaced out letters */
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  /* space below the label */
   margin-bottom:var(--spacing-xs);
 }
 
@@ -177,7 +172,6 @@ to overlap the header and map. */
   position: fixed;
   top:50%;
   left:50%;
-  /* centers the element */
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,0.8);
   color:white;
@@ -207,8 +201,8 @@ to overlap the header and map. */
 .custom-marker {
   background-color:#000;
   border-radius: 50% 50% 50% 0;
-  transform: roatate(-45deg);
-  border:4px sold #fff;
+  transform: rotate(-45deg);
+  border:4px solid #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   width:46px;
   height:56px;
