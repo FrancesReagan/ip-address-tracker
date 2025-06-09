@@ -114,7 +114,7 @@ if(!map)
   }
 
   // set map view//
-  map.setView([lat,lng],19);
+  map.setView([lat,lng],13);
 
   // update or create  marker//
   if(marker){
@@ -167,8 +167,40 @@ if(!map)
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.messages || `API error:${response.status}`);
       }
+
+      const data = await response.json();
+      console.log("Location data received:",data);
+
+      updateUI(data);
+
+    } catch (error) {
+      showError(error.message);
+      console.error("Error fetching location data:",error);
+    } finally {
+      hideLoading();
     }
-  }
+    }
+
+    // initialize leaflet map//
+    function initMap() {
+      try {
+        // initialize map with default view//
+        map = L.map("map").setView([0,0],2);
+
+        // add tile layer//
+        L.titleLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+         maxZoom: 19,
+         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',}).addTo(map);
+
+        //add zoom control//
+        L.control.zoom({
+          position."bottomright"
+        }).addTo(map);
+
+        // try using browser geolocatoin//
+        map.locate({setView:true, maxZoom:16})
+    }
+  
 
 
 
