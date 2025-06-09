@@ -56,7 +56,7 @@ function showLoading() {
 
 function hideLoading() {
   if(loadingDisplay) loadingDisplay.style.display = "none";
-
+}
 // show error msg to user//
 function showError(message){
   if(!errorMsg){
@@ -132,6 +132,7 @@ if(!map){
   // add popup w/info//
   marker.bindPopup(`<b>${data.ip}</b><br>${data.location.city},${data.location.country}`).openPopup();
   }
+}
 
   // fetch IP/Domain location data from geo.ipify API//
   // @param {string} query - IP address or domain to look up(empty for user's IP)//
@@ -201,7 +202,7 @@ if(!map){
         }).addTo(map);
 
         // try using browser geolocation//
-        map.locate({setView:true, maxZoom:16})
+        map.locate({setView:true, maxZoom:16});
 
         // geolocation success handling//
         map.on("locationfound",async (e) => {
