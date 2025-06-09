@@ -218,6 +218,16 @@ to overlap the header and map. */
   justify-content: center;
 }
 
+.custom-marker::before {
+  content:"";
+  position:absolute;
+  width: 12px;
+  height:12px;
+  background:white;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
 /* desktop styles (min-width:768px---adjustments for larger screens) */
 @media (min-width:768px) {
   .header {
